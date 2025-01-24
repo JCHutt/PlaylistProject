@@ -1,30 +1,84 @@
 /**
- * Created a Song object with attributes for the Playlist Project
- * @author Jujube Hutt 
+ * Models a Song object with a title, artist, duration, and liked status
+ * for the Playlist Project
+ * @author Jujube Hutt & Maddie Delbridge
  * @version 2025-01-24
  */
 public class Song {
-    //Fields-- what information do we want each Song to store?
-
-
-
+    String title; 
+    String artist;
+    int duration;
+    boolean liked;
 
     /**
-     * Constructor-- what information needs to be given to make a Song?
-     * How will you handle 'liked' songs? It makes sense for a Song not be 'liked' by default
+     * Constructs a song with a title, artist, and duration
+     * @param title  the title of the song
+     * @param artist  the creator of the song
+     * @param duration  the duration of the song in seconds
      */
+    public Song(String title, String artist, int duration)
+    {
+        this.title = title;
+        this.artist = artist;
+        this.duration = duration;
+        liked = false;
+    }
 
+    public String getTitle()
+    {
+        return title;
+    }
 
+    public String getArtist()
+    {
+        return artist;
+    }
 
+    public int getDuration()
+    {
+        return duration;
+    }
 
+    public void likedOrNot()
+    {
+        if (liked)
+        {
+        liked = false;
+        }
+        else 
+        {
+        liked = true;
+        }
+    }
 
-     /**
-      * Methods-- what will you want each Song to do?
-      * Consider all the getter methods (getName, getArtist, etc.)
-      * You should probably have a toString method to be able to get the information for the full
-      * song easily as well!
-      * What kind of mutator (setter) methods will you need?
-      */
+    public String toString()
+    {
+        String stringSong = "\"";
 
+        for (int i = 0; i<title.length(); i++)
+        {
+            stringSong+= title.substring(i,i+1);
+        }
+        stringSong+= "\" by ";
+        for (int i = 0; i<artist.length(); i++)
+        {
+            stringSong+= artist.substring(i,i+1);
+        }
+        stringSong+= " (";
+        int minutes = duration / 60;
+        stringSong += minutes;
+        int seconds = duration % 60;
+        stringSong += ":";
+        if (seconds <= 9)
+        {
+            stringSong += "0" + seconds;
+        }
+        else
+        {
+          stringSong += seconds;  
+        }
+        stringSong+= ")";
+        return stringSong;
+    }
 
 }
