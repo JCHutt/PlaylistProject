@@ -72,22 +72,4 @@ public class Song {
         stringSong+= " (";
         int minutes = duration / 60;
         stringSong += minutes;
-        int seconds = duration % 60;
-        stringSong += ":";
-        if (seconds <= 9)
-        {
-            stringSong += "0" + seconds;
-        }
-        else
-        {
-          stringSong += seconds;  
-        }
-        stringSong+= ")";
-        if (liked)
-        {
-           stringSong += " -- liked"; 
-        }
-        return stringSong;
-    }
-
-}
+        int se
