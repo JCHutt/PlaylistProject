@@ -39,7 +39,12 @@ public class Song {
         return duration;
     }
 
-    public void likedOrNot()
+    public int getLikedStatus()
+    {
+        return liked;
+    }
+
+    public void likeOrUnlike()
     {
         if (liked)
         {
@@ -78,6 +83,10 @@ public class Song {
           stringSong += seconds;  
         }
         stringSong+= ")";
+        if (liked)
+        {
+           stringSong += " -- liked"; 
+        }
         return stringSong;
     }
 

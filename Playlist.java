@@ -31,4 +31,22 @@ public class Playlist {
        * Determining the total duration of all songs
        * Removing all unliked songs from the playlist (careful with this one!)
        */
+
+    public void PrintSongs()
+    {
+        for (int i; i<songs.size(); i++)
+        {
+            System.out.println(songs.get(i).toString);
+    }
+
+    public void PrintLikedSongs()
+    {
+        for (int i; i<songs.size(); i++)
+        {
+            if (songs.get(i).getLikedStatus())
+            System.out.println(songs.get(i).toString);
+    }
+    }
+
+
 }
