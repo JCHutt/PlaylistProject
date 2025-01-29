@@ -1,10 +1,12 @@
-import java.util.ArrayList;
-
 /**
  * The Playlist class, which keeps track of a playlist of Song objects.
+ * Assignment for AP Computer Science A at Polytechnic School
+ * @author Maddie Delbridge & Jujube Hutt
+ * @version 2025-01-28
  */
-public class Playlist {
 
+ import java.util.ArrayList;
+public class Playlist {
     /**
      * Field: An ArrayList to store the list of Song objects.
      */
@@ -36,6 +38,18 @@ public class Playlist {
             System.out.println("Invalid index.");
         }
     }
+    
+    /**
+     * Likes a song at the specified index.
+     * @param index the index of the song to like.
+     */
+    public void UnlikeSong(int index) {
+        if (index >= 0 && index < songs.size()) {
+            songs.get(index).likeOrUnlike();
+        } else {
+            System.out.println("Invalid index.");
+        }
+    }
 
     /**
      * Removes a song at the specified index.
@@ -59,13 +73,12 @@ public class Playlist {
     }
 
     /**
-     * Returns a sublist of liked songs.
-     * @return an ArrayList containing only liked songs.
+     * Displays all the liked songs in the playlist.
      */
-    public ArrayList<Song> getLikedSongs() {
+    public void displayLikedSongs() {
         ArrayList<Song> likedSongs = new ArrayList<>();
         for (Song song : songs) {
-            if (song.isLiked()) {
+            if (song.getLikedStatus()) {
                 likedSongs.add(song);
             }
         }
@@ -73,29 +86,44 @@ public class Playlist {
         {
         System.out.println(song.toString());
         }
-        return likedSongs;
     }
 
     /**
      * Calculates the total duration of all songs in the playlist.
-     * @return the total duration of all songs in seconds.
+     * @return the total duration of all songs in minutes and seconds
      */
-    public int getTotalDuration() {
+    public String getTotalDuration() {
         int totalDuration = 0;
+        String totalDurationString = "(";
         for (Song song : songs) {
             totalDuration += song.getDuration();
         }
-        return totalDuration;
+        int minutes = totalDuration / 60;
+        totalDurationString += minutes;
+        int seconds = totalDuration % 60;
+        totalDurationString += ":";
+        if (seconds <= 9)
+        {
+            totalDurationString += "0" + seconds;
+        }
+        else
+        {
+          totalDurationString += seconds;  
+        }
+        totalDurationString += ")";
+        return totalDurationString;
     }
 
-<<<<<<< HEAD
     /**
      * Removes all unliked songs from the playlist.
      */
     public void removeUnlikedSongs() {
-        if (!song.getLikedStatus())
-        songs.remove(song);
+        for (int i = songs.size() - 1; i >= 0; i--)
+        {
+            if (!songs.get(i).getLikedStatus())
+            {
+                 songs.remove(i);
+            }
+        }
     }
-=======
->>>>>>> 09f950d (Retrying same commit)
 }
