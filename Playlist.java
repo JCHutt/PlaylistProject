@@ -5,7 +5,7 @@
  * @version 2025-01-28
  */
 
- import java.util.ArrayList;
+import java.util.ArrayList;
 public class Playlist {
     /**
      * Field: An ArrayList to store the list of Song objects.
